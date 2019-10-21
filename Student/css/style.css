@@ -1,0 +1,135 @@
+/* navbar start */
+.bg-color{
+    background:#041E54 !important;
+}
+.navbar-nav li a  {
+    color: aliceblue !important;
+    font-size: 1.1rem;
+}
+.navbar-nav li a:hover{
+    border: 1px solid white;
+}
+/* alert start */
+.alert{
+	
+	margin: 20px auto;
+	display: none;
+}
+/* alert end */
+/* navbar end */
+body {
+        margin: 0;
+        padding: 0;
+		color: #999;
+		background: #f5f5f5;
+		font-family: 'Roboto', sans-serif;
+	}
+	.form-control, .form-control:focus, .input-group-addon {
+		border-color: #e1e1e1;
+        border-radius: 0;
+	}
+	.signup-form {
+		width: 390px;
+		margin: 0 auto;
+		padding: 30px 0;
+	}
+	.signup-form h2 {
+		color: #636363;
+        margin: 0 0 15px;
+		text-align: center;
+    }
+    .signup-form .lead {
+        font-size: 14px;
+		margin-bottom: 30px;
+		text-align: center;
+	}
+    .signup-form form {		
+		border-radius: 1px;
+    	margin-bottom: 15px;
+        background: #fff;
+		border: 1px solid #f3f3f3;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+    }
+	.signup-form .form-group {
+		margin-bottom: 20px;
+	}
+	.signup-form label {
+		font-weight: normal;
+		font-size: 13px;
+	}
+	.signup-form .form-control {
+		min-height: 38px;
+		box-shadow: none !important;
+		border-width: 0 0 1px 0;
+	}	
+	.signup-form .input-group-addon {
+		max-width: 42px;
+		text-align: center;
+		background: none;
+		border-width: 0 0 1px 0;
+		padding-left: 5px;
+	}
+    .signup-form .btn {        
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 3px;
+        background: white;
+		border: 2px solid #041E54;
+        min-width: 140px;
+        color: black;
+        outline: none !important;
+    }
+	.signup-form .btn:hover, .signup-form .btn:focus {
+		background: #041E54;
+	}
+	.signup-form a {
+		color: #041E54;
+		text-decoration: none;
+	}	
+	.signup-form a:hover {
+		text-decoration: underline;
+	}
+	.signup-form .fa {
+		font-size: 21px;
+	}
+	.signup-form .fa-paper-plane {
+		font-size: 17px;
+	}
+	.signup-form .fa-check {
+		color: #fff;
+		left: 9px;
+		top: 18px;
+		font-size: 7px;
+		position: absolute;
+	} 
+    /* student register end  */
+/* footer start */
+.nav-margin{
+    margin-top: 100px;
+    border: 2px solid white;
+    background: #041E54;
+    color: aliceblue;
+}
+.nav-margin h3{
+    margin-top: 20px;
+    text-decoration: underline;
+}
+.text-design li a{
+    color: aliceblue;
+   
+}
+.text-design li{
+     padding: 5px;
+     font-size:1.1em;
+}
+/* footer end */
+
+/* hide and show otp start */
+#otp{
+	display: none;
+}
+#varify{
+	display: none;
+}
+/* hide and show otp end */

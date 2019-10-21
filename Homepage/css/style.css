@@ -1,0 +1,54 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding:0 ;
+}
+/* navbar start */
+.bg-color{
+    background:#041E54 !important;
+}
+.navbar-nav li a  {
+    color: aliceblue !important;
+    font-size: 1.1rem;
+}
+.navbar-nav li a:hover{
+    border: 1px solid white;
+}
+/* navbar end */
+
+/* banner start */
+.container h1{
+    margin-top: 180px;
+}
+.container p{
+    font-size:1.1rem;
+    
+}
+.container .btn-design{
+    border: 2px solid #041E54;
+}
+.container .btn-design:hover{
+    background: #041E54;
+    color: aliceblue;
+}
+/* banner end */
+/* nav start */
+.nav-margin{
+    margin-top: 100px;
+    border: 2px solid white;
+    background: #041E54;
+    color: aliceblue;
+}
+.nav-margin h3{
+    margin-top: 20px;
+    text-decoration: underline;
+}
+.text-design li a{
+    color: aliceblue;
+   
+}
+.text-design li{
+     padding: 5px;
+     font-size:1.1em;
+}
+/* nav end */
