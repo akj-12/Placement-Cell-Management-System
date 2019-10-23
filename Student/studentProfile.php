@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <title>Student Create Account </title>
+    <title>Student Details </title>
 </head>
 
 <body>
@@ -39,84 +39,103 @@
         <div class="collapse navbar-collapse " id="collapsibleNavbar">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="../Student/studentLogin.php">Student Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../TPO/tpoLogin.php">TPO Login</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="#">Placement Drives</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="studentDetails.php">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Log out</a>
                 </li>
             </ul>
         </div>
     </nav>
     <!-- navbar end  -->
 
-    <!-- form start -->
-    <div class="signup-form">
-        <h3 id="message" class="text-danger text-center " style="visibility:hidden;">Invalid Login!</h3>
-        <form action="" method="post">
-            <h2>Log In</h2>
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    <input type="text" title="Enter enrollment number" class="form-control"           name="enrollmentNumber" id="enrollmentNumber" placeholder="Enrollment Number" required="required">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    <input type="text" class="form-control" name="password" title="Must contain at least one number and one special character" id="password" placeholder="Password" required="required">
-                </div>
-
-            </div>
-            <div class="form-group">
-                <button type="submit" name="login" class="btn btn-primary btn-block btn-lg">Log In</button>
-            </div>
-        </form>
-        <div class="text-center">Don't have an account? <a href="otpLogin.php">Create Account</a>.</div>
-        <div class="text-center mt-2">Trouble to Login? <a href="forgetStudent.php">Account Recovery</a>.</div>
-    </div>
-
-    <!-- php login -->
-    <?php
-// connect to server and database
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "placementcell";
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
-// check login query
-if (isset($_POST['login'])) {
-    // get values from the login file
-    $enrollmentNumber = $_POST['enrollmentNumber'];
-    $password = $_POST['password'];
-
-// query in database
-    $query = "SELECT * FROM STUDENTREGISTRATION WHERE enrollment_no='$enrollmentNumber' && password = '$password'";
-    $data = mysqli_query($conn, $query);
-    $total = mysqli_num_rows($data);
-    if ($total == 1) {
-        header('location:studentProfile.php');
-    } else {
-        ?>
-        <script>
-            document.getElementById("message").style.visibility="visible";
-        </script>
-        <?php
-}
-    mysqli_close($conn);
-}
-?>
-    <!-- php login end -->
+    <!-- table start -->
+    <h3 class="text-center">Student Details</h3>
+    <table class="table table-bordered container table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Details</th>
+      <th scope="col">Value</th>
+      <th scope="col">Update</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <th scope="row">First Name</th>
+        <td>Mark</td>
+    </tr>
+    <tr>
+        <th scope="row">Last Name</th>
+        <td>Jacob</td>    
+    </tr>
+    <tr>
+        <th scope="row">Address</th>
+        <td >Larry the Bird</td>
+    </tr>
+    <tr>
+        <th scope="row">City</th>
+        <td >New  Delhi</td>
+    </tr>
+    <tr>
+        <th scope="row">State</th>
+        <td >Delhi</td>
+    </tr>
+    <tr>
+        <th scope="row">ZIP</th>
+        <td >110035</td>
+    </tr>
+    <tr>
+        <th scope="row">E-mail</th>
+        <td >a.gmail.com</td>
+    </tr>
+    <tr>
+        <th scope="row">Enrollment Number</th>
+        <td >110035</td>
+    </tr>
+    <tr>
+        <th scope="row">Mobile Number</th>
+        <td >7859999353</td>
+    </tr>
+    <tr>
+        <th scope="row">10th percentage</th>
+        <td >78</td>
+    </tr>
+    <tr>
+        <th scope="row">10th school name</th>
+        <td >Veena Vidya Mandir</td>
+    </tr>
+    <tr>
+        <th scope="row">10th passout year</th>
+        <td >2012</td>
+    </tr>
+    <tr>
+        <th scope="row">12th percentage</th>
+        <td >78</td>
+    </tr>
+    <tr>
+        <th scope="row">12th school name</th>
+        <td >Ram Niranjan</td>
+    </tr>
+    <tr>
+        <th scope="row">12th passout year</th>
+        <td >2014</td>
+    </tr>
+    <tr>
+        <th scope="row">BTECH CGPA</th>
+        <td >7</td>
+    </tr>
+    <tr>
+        <th scope="row">CV</th>
+        <td >a.pdf</td>
+    </tr>
+    
+  </tbody>
+</table>
+    <!-- table end -->
 
     <!-- navigation start -->
     <div class="container-fluid text-center nav-margin">

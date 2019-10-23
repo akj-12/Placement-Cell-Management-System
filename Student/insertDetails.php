@@ -27,14 +27,22 @@ $twelvePercentage = $_REQUEST['twelvePercentage'];
 $highSchool = $_REQUEST['highSchool'];
 $twelvePassOutYear = $_REQUEST['twelvePassOutYear'];
 $btechPercentage = $_REQUEST['btechPercentage'];
-$cv = $_REQUEST['cv'];
+// inserting file 
+
+// retriving from form
+$file = $_FILES['cv'];
+// storing into temp var
+$fileName = $_FILES['cv']['name'];
+$file_temp = $_FILES['cv']['tmp_name'];
+
+move_uploaded_file($file_temp,"FileUpload/".$fileName);
 
 // inserting values into table
-$sql = "INSERT INTO studentdetails(enrollment_no,email,password,branch) VALUES('$enrollMent','$email','$password','$branch')";
+$sql = "INSERT INTO studentdetails(FirstName,LastName,Address,City,State,Zip,Email,EnrollmentNumber,Mobile,TenthPercentage,TenthSchool,TenthPassOutYear,TwelvePercentage,TwelveSchoolName,TwelvePassOutYear,BtechPercentage,CV) VALUES('$firstName','$lastName','$address','$city','$state','$zip','$email','$enrollment','$mobile','$tenthPercentage','$schoolName','$tenthPassOutYear','$twelvePercentage','$highSchool','$twelvePassOutYear','$btechPercentage','$fileName')";
 
 if (mysqli_query($conn, $sql)) {
     // echo "New record created successfully";
-    echo "<script>window.open('studentLogin.php','_self')</script>";
+    echo "<script>window.open('studentDetails.php','_self')</script>";
 
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);

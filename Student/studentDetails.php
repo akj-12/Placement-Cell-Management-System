@@ -54,7 +54,7 @@
 
     <!-- Form for registration -->
     <div class=" signup-form container">
-        <form method="post" action="" >
+        <form method="post" action="insertDetails.php" enctype="multipart/form-data">
         <h2>Personal Information</h2>
                 <div class="form-row">
                     <div class="form-group col-md-6">
