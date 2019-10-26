@@ -128,10 +128,7 @@
                     <label for="email">Email</label>
                     <input type="email" class="form-control" name="email" id="email" required>
                     </div>
-                    <div class="form-group col-md-4">
-                    <label for="enrollment">Enrollment Number</label>
-                    <input type="text" class="form-control" id="enrollment" name="enrollment" required>
-                    </div>
+                   
                     <div class="form-group col-md-4">
                     <label for="mobile">Mobile Number</label>
                     <input type="text" class="form-control" id="mobile" name="mobile" required>
