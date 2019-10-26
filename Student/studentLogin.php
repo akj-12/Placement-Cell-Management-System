@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -105,7 +108,10 @@ if (isset($_POST['login'])) {
     $data = mysqli_query($conn, $query);
     $total = mysqli_num_rows($data);
     if ($total == 1) {
-        header('location:studentProfile.php');
+
+        $_SESSION["userName"]  = $enrollmentNumber;
+
+        header('location:studentDetails.php');
     } else {
         ?>
         <script>

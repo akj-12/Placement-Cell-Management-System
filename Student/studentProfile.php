@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if ($_SESSION['userName'] == true) {
+        
+    }else{
+        header('location:studentLogin.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,7 +53,7 @@
                     <a class="nav-link" href="studentDetails.php">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Log out</a>
+                    <a class="nav-link" href="logout.php">Log out</a>
                 </li>
             </ul>
         </div>
@@ -57,80 +65,107 @@
     <table class="table table-bordered container table-hover">
   <thead>
     <tr>
-      <th scope="col">Details</th>
-      <th scope="col">Value</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
       <th scope="col">Update</th>
       <th scope="col">Delete</th>
     </tr>
   </thead>
+
+  <?php
+  
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "placementcell";
+
+    // Create connection
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    // Check connection
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    $query = "SELECT * FROM STUDENTDETAILS WHERE EnrollmentNumber='$_SESSION[userName]'";
+    $data = mysqli_query($conn , $query);
+    $total = mysqli_num_rows($data);
+    $result = mysqli_fetch_assoc($data);
+    // echo $result['FirstName'];
+
+    if ($total != 0 ) {
+       // echo "TAble has records";
+    }else{
+        echo "Table has no records";
+    }
+  ?>
   <tbody>
     <tr>
         <th scope="row">First Name</th>
-        <td>Mark</td>
+        <td><?php echo $result['FirstName']; ?></td>
     </tr>
     <tr>
         <th scope="row">Last Name</th>
-        <td>Jacob</td>    
+        <td><?php echo $result['LastName']; ?></td>    
     </tr>
     <tr>
         <th scope="row">Address</th>
-        <td >Larry the Bird</td>
+        <td ><?php echo $result['Address']; ?></td>
     </tr>
     <tr>
         <th scope="row">City</th>
-        <td >New  Delhi</td>
+        <td ><?php echo $result['City']; ?></td>
     </tr>
     <tr>
         <th scope="row">State</th>
-        <td >Delhi</td>
+        <td ><?php echo $result['State']; ?></td>
     </tr>
     <tr>
         <th scope="row">ZIP</th>
-        <td >110035</td>
+        <td ><?php echo $result['Zip']; ?></td>
     </tr>
     <tr>
         <th scope="row">E-mail</th>
-        <td >a.gmail.com</td>
+        <td ><?php echo $result['Email']; ?></td>
     </tr>
     <tr>
         <th scope="row">Enrollment Number</th>
-        <td >110035</td>
+        <td ><?php echo $result['EnrollmentNumber']; ?></td>
     </tr>
     <tr>
         <th scope="row">Mobile Number</th>
-        <td >7859999353</td>
+        <td ><?php echo $result['Mobile']; ?></td>
     </tr>
     <tr>
         <th scope="row">10th percentage</th>
-        <td >78</td>
+        <td ><?php echo $result['TenthPercentage']; ?></td>
     </tr>
     <tr>
         <th scope="row">10th school name</th>
-        <td >Veena Vidya Mandir</td>
+        <td ><?php echo $result['TenthSchool']; ?></td>
     </tr>
     <tr>
         <th scope="row">10th passout year</th>
-        <td >2012</td>
+        <td ><?php echo $result['TenthPassOutYear']; ?></td>
     </tr>
     <tr>
         <th scope="row">12th percentage</th>
-        <td >78</td>
+        <td ><?php echo $result['TwelvePercentage']; ?></td>
     </tr>
     <tr>
         <th scope="row">12th school name</th>
-        <td >Ram Niranjan</td>
+        <td ><?php echo $result['TwelveSchoolName']; ?></td>
     </tr>
     <tr>
         <th scope="row">12th passout year</th>
-        <td >2014</td>
+        <td ><?php echo $result['TwelvePassOutYear']; ?></td>
     </tr>
     <tr>
         <th scope="row">BTECH CGPA</th>
-        <td >7</td>
+        <td ><?php echo $result['BtechPercentage']; ?></td>
     </tr>
     <tr>
         <th scope="row">CV</th>
-        <td >a.pdf</td>
+        <td ><?php echo $result['CV']; ?></td>
     </tr>
     
   </tbody>

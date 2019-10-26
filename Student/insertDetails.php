@@ -1,8 +1,11 @@
  <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "placementcell";
+ session_start();
+ 
+if ($_SESSION['userName'] == true) {
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "placementcell";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -48,6 +51,9 @@ if (mysqli_query($conn, $sql)) {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
 
+}else{
+    header('location:studentLogin.php');
+}
 //closing db
 mysqli_close($conn);
 ?>

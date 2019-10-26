@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if ($_SESSION['userName'] == true) {
+        // echo "welcome".$_SESSION['userName'];
+    }else{
+        header('location:studentlogin.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,10 +50,10 @@
                     <a class="nav-link" href="#">Placement Drives</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Profile</a>
+                    <a class="nav-link" href="studentProfile.php">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Log out</a>
+                    <a class="nav-link" href="logout.php">Log out</a>
                 </li>
             </ul>
         </div>
