@@ -45,6 +45,7 @@ $sql = "INSERT INTO studentdetails(FirstName,LastName,Address,City,State,Zip,Ema
 
 if (mysqli_query($conn, $sql)) {
     // echo "New record created successfully";
+     
     echo "<script>window.open('studentDetails.php','_self')</script>";
 
 } else {

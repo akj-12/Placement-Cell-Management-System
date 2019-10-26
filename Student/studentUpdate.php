@@ -1,10 +1,67 @@
-<?php
-    session_start();
-    if ($_SESSION['userName'] == true) {
-        // echo "welcome".$_SESSION['userName'];
-    }else{
-        header('location:studentlogin.php');
+<?php 
+session_start();
+ if ($_SESSION['id'] == true) {
+        // connecting db
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "placementcell";
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    // Check connection
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+        
     }
+
+//     fetching values for autofill form
+    $query = "SELECT * FROM STUDENTDETAILS WHERE id='$_SESSION[id]'";
+    $data = mysqli_query($conn , $query);
+    $total = mysqli_num_rows($data);
+    $result = mysqli_fetch_assoc($data);
+    
+    
+if (isset($_REQUEST['update'])) {
+        // fetching data from form
+        $address = $_REQUEST['address'];
+        $city = $_REQUEST['city'];
+        $state = $_REQUEST['state'];
+        $zip = $_REQUEST['zip'];
+        $email = $_REQUEST['email'];
+        $mobile = $_REQUEST['mobile'];
+        $tenthPercentage = $_REQUEST['tenthPercentage'];
+        $schoolName = $_REQUEST['schoolName'];
+        $tenthPassOutYear = $_REQUEST['tenthPassOutYear'];
+        $twelvePercentage = $_REQUEST['twelvePercentage'];
+        $highSchool = $_REQUEST['highSchool'];
+        $twelvePassOutYear = $_REQUEST['twelvePassOutYear'];
+        $btechPercentage = $_REQUEST['btechPercentage'];
+        // inserting file 
+
+        // retriving from form
+        $file = $_FILES['cv'];
+        // storing into temp var
+        $fileName = $_FILES['cv']['name'];
+        $file_temp = $_FILES['cv']['tmp_name'];
+
+        move_uploaded_file($file_temp,"FileUpload/".$fileName);
+        $sql = "UPDATE studentdetails SET Address = '$address',City='$city',State='$state',Zip='$zip',Email='$email' , Mobile='$mobile' ,TenthPercentage='$tenthPercentage',TenthSchool='$schoolName',
+        TenthPassOutYear='$tenthPassOutYear' ,TwelvePercentage='$twelvePercentage',TwelveSchoolName='$highSchool',TwelvePassOutYear='$twelvePassOutYear',BtechPercentage='$btechPercentage',CV='$fileName' where id = $_SESSION[id]";
+
+        if (mysqli_query($conn,$sql)) {
+            // echo "Success";
+           header('location:studentProfile.php');
+        }else{
+            echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
+        }
+}
+
+    }else{
+        header('location:studentLogin.php');
+    }
+
+     
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,31 +119,31 @@
 
     <!-- Form for registration -->
     <div class=" signup-form container">
-        <form method="post" action="insertDetails.php" enctype="multipart/form-data">
-        <h2>Personal Information</h2>
+        <form method="post"  enctype="multipart/form-data">
+        <h2>Update Personal Information</h2>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputEmail4">First Name</label>
-                        <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name" required >
+                        <input type="text" class="form-control " name="firstName" value="<?php echo $result['FirstName']; ?>" id="firstName" placeholder="First Name" readonly  >
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputPassword4">Last Name</label>
-                        <input type="text" class="form-control" name="lastName" id="lastName" placeholder="lastName" required>
+                        <input type="text" class="form-control" name="lastName" id="lastName" placeholder="lastName" value="<?php echo $result['LastName']; ?>" readonly >
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputAddress">House Number</label>
-                    <input type="text" class="form-control" name="address" id="inputAddress" placeholder="1234 Main St Delhi" required>
+                    <input type="text" class="form-control" name="address" id="inputAddress" placeholder="1234 Main St Delhi" value="<?php echo $result['Address']; ?>" required>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputCity">City</label>
-                        <input type="text" class="form-control" name="city" id="inputCity" required>
+                        <input type="text" class="form-control" name="city" id="inputCity" value="<?php echo $result['City']; ?>" required>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="inputState">State</label>
                         <select id="inputState" class="form-control" name="state" required>
-                        <option value="" selected>Choose...</option>
+                        <option value="<?php echo $result['State']; ?>" selected><?php echo $result['State']; ?></option>
                         <option value="Andra Pradesh">Andra Pradesh</option>
                         <option value="Arunachal Pradesh">Arunachal Pradesh</option>
                         <option value="Assam">Assam</option>
@@ -122,55 +179,55 @@
                     </div>
                     <div class="form-group col-md-2">
                     <label for="inputZip">Zip</label>
-                    <input type="text" class="form-control" name="zip" id="inputZip" required>
+                    <input type="text" class="form-control" name="zip" id="inputZip" value="<?php echo $result['Zip']; ?>" required>
                     </div>
                     <div class="form-group col-md-4">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" name="email" id="email" required>
+                    <input type="email" class="form-control" name="email" id="email" value="<?php echo $result['Email']; ?>" required>
                     </div>
                    
                     <div class="form-group col-md-4">
                     <label for="mobile">Mobile Number</label>
-                    <input type="text" class="form-control" id="mobile" name="mobile" required>
+                    <input type="text" class="form-control" id="mobile" name="mobile" value="<?php echo $result['Mobile']; ?>"required>
                     </div>
                 </div>
-                <h2>Academic Information</h2>
+                <h2>Update Academic Information</h2>
                 <div class="form-row">
                     <div class="form-froup col-md-4">
                         <label for="tenth">10th Percentage</label>
-                        <input type="text" class="form-control" id="tenth" name="tenthPercentage" required>
+                        <input type="text" class="form-control" id="tenth" name="tenthPercentage" value="<?php echo $result['TenthPercentage']; ?>" required>
                     </div>
                     <div class="form-froup col-md-4">
                         <label for="schoolName">School Name</label>
-                        <input type="text" class="form-control" id="schoolName" name="schoolName" required>
+                        <input type="text" class="form-control" id="schoolName" name="schoolName" value="<?php echo $result['TenthSchool']; ?>" required>
                     </div>
                     <div class="form-froup col-md-4">
                         <label for="schoolName">Passout Year(10th)</label>
-                        <input type="text" class="form-control" name="tenthPassOutYear" id="schoolName" required>
+                        <input type="text" class="form-control" name="tenthPassOutYear" id="schoolName" value="<?php echo $result['TenthPassOutYear']; ?>"required>
                     </div>
                 <div class="form-froup col-md-4">
                     <label for="twelveth">12th Percentage</label>
-                    <input type="text" class="form-control" id="twelveth" name="twelvePercentage" required>
+                    <input type="text" class="form-control" id="twelveth" name="twelvePercentage" value="<?php echo $result['TwelvePercentage']; ?>"required>
                 </div>
                 <div class="form-froup col-md-4">
                     <label for="highSchool">High School Name</label>
-                    <input type="text" class="form-control" id="highSchool" name="highSchool" required>
+                    <input type="text" class="form-control" id="highSchool" name="highSchool" value="<?php echo $result['TwelveSchoolName']; ?>" required>
                 </div>
                 <div class="form-froup col-md-4">
                     <label for="twelveth">Passout Year (12th)</label>
-                    <input type="text" class="form-control" name="twelvePassOutYear" id="twelveth" required>
+                    <input type="text" class="form-control" name="twelvePassOutYear" id="twelveth" value="<?php echo $result['TwelvePassOutYear']; ?>" required>
                 </div>
                 <div class="form-froup col-md-4">
                     <label for="btech">B.TECH CGPA</label>
-                    <input type="text" class="form-control" name="btechPercentage" id="btech" required>
+                    <input type="text" class="form-control" name="btechPercentage" id="btech" value="<?php echo $result['BtechPercentage']; ?>" required>
                 </div>
                 </div>
                 <div class="form-group">
                     <label for="CV">Upload your CV:</label>
-                    <input type="file" class="form-control-file" name="cv" id="CV" required>
+                    <input type="file" class="form-control-file" name="cv" value="<?php echo $result['CV']; ?>" id="CV" >
                 </div>
                 <div class="text-center">
-                <button type="submit" class="btn btn-primary ">Submit</button>
+                <button type="submit" name="update" class="btn btn-primary ">Update</button>
                 </div>
     </form>
     </div>

@@ -54,7 +54,7 @@
         </div>
     </nav>
     <!-- navbar end  -->
-
+    
     <!-- form start -->
     <div class="signup-form">
         <h3 id="message" class="text-danger text-center " style="visibility:hidden;">Invalid Login!</h3>
@@ -70,7 +70,7 @@
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    <input type="text" class="form-control" name="password" title="Must contain at least one number and one special character" id="password" placeholder="Password" required="required">
+                    <input type="password" class="form-control" name="password" title="Must contain at least one number and one special character" id="password" placeholder="Password" required="required">
                 </div>
 
             </div>
@@ -112,11 +112,12 @@ if (isset($_POST['login'])) {
         $_SESSION["userName"]  = $enrollmentNumber;
 
         header('location:studentDetails.php');
-    } else {
+    } else { 
         ?>
         <script>
             document.getElementById("message").style.visibility="visible";
         </script>
+        
         <?php
 }
     mysqli_close($conn);

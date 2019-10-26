@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,7 +57,8 @@
 
     <!-- form start -->
     <div class="signup-form">
-        <form action="#" method="post">
+        <h3 id="message" class="text-danger text-center " style="visibility:hidden;">Invalid Login!</h3>
+        <form  method="post" >
             <h2>TPO Log In</h2>
 
             <div class="form-group">
@@ -66,16 +71,57 @@
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    <input type="text" class="form-control" name="password" placeholder="Password" required="required">
+                    <input type="password" class="form-control" name="password" placeholder="Password" required="required">
                 </div>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block btn-lg">Log In</button>
+                <button type="submit" class="btn btn-primary btn-block btn-lg" name="submit">Log In</button>
             </div>
 
         </form>
 
     </div>
+
+    <?php
+
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $databaseName ="placementcell";
+
+        $conn = mysqli_connect($servername,$username,$password,$databaseName);
+
+        if ($conn == true) {
+                // echo "Succcess";
+        }else{
+                die("Connection Failed").mysqli_connect_error();
+        }
+
+        if (isset($_POST['submit'])) {
+                $username = $_POST['username'];
+                $password = $_POST['password'];
+
+                // query in database
+                $query = "SELECT * FROM tpo WHERE user = '$username' && password = '$password'";
+                $data = mysqli_query($conn,$query);
+                $total = mysqli_num_rows($data);
+
+                if ($total == 1) {
+                        $_SESSION['user'] = $username;
+                        header('location:fetchStudents.php');
+                }else{
+                ?>
+                <script>
+                        document.getElementById("message").style.visibility="visible";
+                </script>
+
+                <?php
+
+                }
+
+                mysqli_close($conn);
+        }
+?>
 
     <!-- navigation start -->
     <div class="container-fluid text-center nav-margin">
