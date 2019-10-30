@@ -1,6 +1,4 @@
-<?php
-    session_start();
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +9,7 @@
     <!-- fonts google -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <!-- style main css  -->
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../Student/css/style.css">
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -21,7 +19,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <title>Student Create Account </title>
+    <title>Student Details </title>
 </head>
 
 <body>
@@ -42,88 +40,56 @@
         <div class="collapse navbar-collapse " id="collapsibleNavbar">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="../Student/studentLogin.php">Student Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../TPO/tpoLogin.php">TPO Login</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="#">Placement Drives</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="fetchStudents.php">Fetch Details</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="logout.php">Log out</a>
                 </li>
             </ul>
         </div>
     </nav>
     <!-- navbar end  -->
-    
-    <!-- form start -->
-    <div class="signup-form">
-        <h3 id="message" class="text-danger text-center " style="visibility:hidden;">Invalid Login!</h3>
-        <form action="" method="post">
-            <h2>Log In</h2>
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    <input type="text" title="Enter enrollment number" class="form-control"           name="enrollmentNumber" id="enrollmentNumber" placeholder="Enrollment Number" required="required">
-                </div>
-            </div>
 
-            <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    <input type="password" class="form-control" name="password" title="Must contain at least one number and one special character" id="password" placeholder="Password" required="required">
+    <!-- Form for registration -->
+    <div class=" signup-form container">
+        <form method="post" action="insertJob.php" enctype="multipart/form-data">
+                <h2>Enter Details about job</h2>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="companyName">Company Name</label>
+                        <input type="text" class="form-control" name="companyName" id="companyName" placeholder="Company Name" required >
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="position">Position</label>
+                        <input type="text" class="form-control" name="position" id="position" placeholder="Position" required>
+                    </div>
                 </div>
-
-            </div>
-            <div class="form-group">
-                <button type="submit" name="login" class="btn btn-primary btn-block btn-lg">Log In</button>
-            </div>
-        </form>
-        <div class="text-center">Don't have an account? <a href="otpLogin.php">Create Account</a>.</div>
-        <div class="text-center mt-2">Trouble to Login? <a href="forgetStudent.php">Account Recovery</a>.</div>
+                
+                <div class="form-row">
+                    <div class="form-froup col-md-4">
+                        <label for="date">Date</label>
+                        <input type="date" class="form-control" id="date" name="date" required>
+                    </div>
+                    <div class="form-froup col-md-4">
+                        <label for="package">Package</label>
+                        <input type="text" class="form-control" id="package" name="package" placeholder="Enter Package" required>
+                    </div>
+                <div class="form-froup col-md-4">
+                    <label for="Criteria">Criteria</label>
+                    <input type="text" class="form-control" placeholder="Enter CGPA required" id="Criteria" name="criteria" required>
+                </div>
+                
+                </div>
+                <br>
+                <div class="text-center">
+                    <button type="submit" name="search" class="btn btn-primary ">Post Job</button>
+                </div>
+    </form>
     </div>
-
-    <!-- php login -->
-    <?php
-// connect to server and database
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "placementcell";
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
-// check login query
-if (isset($_POST['login'])) {
-    // get values from the login file
-    $enrollmentNumber = $_POST['enrollmentNumber'];
-    $password = $_POST['password'];
-
-// query in database
-    $query = "SELECT * FROM STUDENTREGISTRATION WHERE enrollment_no='$enrollmentNumber' && password = '$password'";
-    $data = mysqli_query($conn, $query);
-    $total = mysqli_num_rows($data);
-    if ($total == 1) {
-
-        $_SESSION["userName"]  = $enrollmentNumber;
-
-        header('location:studentDetails.php');
-    } else { 
-        ?>
-        <script>
-            document.getElementById("message").style.visibility="visible";
-        </script>
-        
-        <?php
-}
-    mysqli_close($conn);
-}
-?>
-    <!-- php login end -->
+    <!-- Form for registration end -->
 
     <!-- navigation start -->
     <div class="container-fluid text-center nav-margin">

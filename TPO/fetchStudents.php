@@ -2,7 +2,7 @@
         session_start();
        
         if ($_SESSION['user'] == true) {
-               header('fetchStudents.php'); 
+            //    header('fetchStudents.php'); 
         }else{
                 header('location:tpoLogin.php');
         }
@@ -17,7 +17,8 @@
     <!-- fonts google -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <!-- style main css  -->
-    <link rel="stylesheet" href="../Student/css/style.css">
+    <link rel="stylesheet" href="../Student/css/style.css" type="text/css">
+    
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -26,14 +27,14 @@
     <!-- fontawesome -->
     <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Student Create Account </title>
+    <title>TPO Fetch Details </title>
 </head>
 
 <body>
     <!-- navbar start -->
     <nav class="navbar navbar-expand-md bg-color navbar-fixed-top navbar-dark">
         <!-- Brand -->
-        <a class="navbar-brand" href="http://www.ipu.ac.in"><img src="../Homepage/gallery/ipulogo.png" alt="ipu logo" height="80vh" width="100%"></a>
+        <a class="navbar-brand" href="http://www.ipu.ac.in"><img src="../Homepage/gallery/ipulogo.png" alt="ipu logo" height="80vh" width="auto"></a>
 
         <!-- Toggler/collapsibe Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -49,7 +50,7 @@
                     <a class="nav-link" href="../TPO/tpoLogin.php">Fetch Details</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Post Job</a>
+                    <a class="nav-link" href="../TPO/postJob.php">Post Job</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php">Log Out</a>
@@ -59,12 +60,39 @@
     </nav>
     <!-- navbar end  -->
 
-      <!-- search box -->
-      <div class="signup-form">
-          <!-- Search form -->
-<input class="form-control" type="text" placeholder="Search" aria-label="Search">
-      </div>
-      <!-- search box end  -->
+    <!-- search php form end -->
+
+      <!-- search from data base form -->
+        <div class="signup-form container">
+           <form action="search.php" method="POST">
+                <h4 class="text-center">Please Enter the value to  search.</h4>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="FirstName">FirstName</label>
+                        <input type="text" class="form-control" placeholder="First name" name="FirstName">
+                    </div>
+                <div class="form-group col-md-6">
+                    <label for="LastName">LastName</label>
+                    <input type="text" class="form-control" placeholder="Last name" name="LastName">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="Enrollment Number">Enrollment Number</label>
+                    <input type="text" class="form-control" placeholder="Enrollment number" name="EnrollmentNumber">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="Mobile Number">Btech Percentage</label>
+                    <input type="text" class="form-control" placeholder="Mobile Number" name="Mobile">
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary " name="search">Search</button>
+            </div>
+           </form>
+        </div>
+      <!-- search from data base form end -->
 
     <!-- navigation start -->
     <div class="container-fluid text-center nav-margin">
