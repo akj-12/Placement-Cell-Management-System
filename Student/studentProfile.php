@@ -83,7 +83,7 @@
         <div class="collapse navbar-collapse " id="collapsibleNavbar">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Placement Drives</a>
+                    <a class="nav-link" href="../Placement/jobProtal.php">Placement Drives</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="studentDetails.php">Details</a>

@@ -52,7 +52,59 @@
     <!-- navbar end  -->
 
    <!-- Fetching Data From Databse  -->
-      
+   <?php
+        $conn = mysqli_connect("localhost","root","","placementcell");
+        if ($conn == true) {
+            // echo "success";
+        }else{
+            echo "Database connectivity failed .".mysqli_connect_error();
+        }
+
+        // query to fetch data from database 
+        $sql = "SELECT * FROM postjob ";
+        ?>
+
+        <h3 class="text-center mt-5">Coming Drives</h3>
+        <div class="row">
+        <?php
+        
+        if ($data = mysqli_query($conn , $sql)) {
+            if (mysqli_num_rows($data) > 0) {
+                
+                while($result = mysqli_fetch_assoc($data) ){
+                    ?>                     
+                            <div class="col-lg-4">
+                                <div class="card  shadow-lg p-3 m-5 bg-white rounded" style="width:20rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title ">Company Name :<?php echo $result['CompanyName'] ?>  </h5>
+                                        <p class="card-subtitle"><b>Position</b> :<?php echo $result['position']?> </p>
+                                        <p class="card-text"><b>Date : <?php echo $result['Date'];?></b></p>
+                                        <p><b>Package: <?php echo $result['Package']; ?> </b></p>
+                                        <p><b>CGPA Required:<?php echo $result['BtechPercentage']; ?> </b></p>
+                                        <div class="text-center">
+                                            <a href="#" class="btn btn-primary text-center">Apply</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                          
+                    <?php 
+                    // echo "<h5>".$result['CompanyName']."</h5>";
+                    // echo "<p>".$result['position']."</p>";
+                    // echo $result['Date'];
+                    // echo $result['Package'];
+                    // echo $result['BtechPercentage'];
+                }
+        }   
+           
+        }else{
+            echo "No Current Drives";
+        }
+        
+   ?>
+   
+        </div>
+        
    <!-- Fetching Data From Databse End -->
 
 

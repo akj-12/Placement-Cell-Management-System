@@ -44,7 +44,7 @@
                     <a class="nav-link" href="../TPO/tpoLogin.php">TPO Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Placement Drives</a>
+                    <a class="nav-link" href="../Placement/jobProtal.php">Placement Drives</a>
                 </li>
             </ul>
         </div>
