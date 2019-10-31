@@ -137,6 +137,7 @@
                         <h3 class="text-center p-3">Academic Details</h3>
                         <thead class="thead-dark p-4">
                                 <tr>
+                                        <th scope="col">Enrollment Number</th>
                                         <th scope="col">Tenth Percentage</th>
                                         <th scope="col">Tenth School Name</th>
                                         <th scope="col">Tenth Passout Year</th>
@@ -151,6 +152,7 @@
                                 <?php
                                       while($row = mysqli_fetch_array($result)){
                                         echo "<tr>";
+                                                echo "<td>" . $row['EnrollmentNumber'] . "</td>";
                                                 echo "<td>" . $row['TenthPercentage'] . "</td>";
                                                 echo "<td>" . $row['TenthSchool'] . "</td>";
                                                 echo "<td>" . $row['TenthPassOutYear'] . "</td>";

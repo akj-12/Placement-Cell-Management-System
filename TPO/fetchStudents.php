@@ -47,9 +47,6 @@
         <div class="collapse navbar-collapse " id="collapsibleNavbar">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="../TPO/tpoLogin.php">Fetch Details</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="../TPO/postJob.php">Post Job</a>
                 </li>
                 <li class="nav-item">
