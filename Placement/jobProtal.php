@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <!-- icon -->
+     <link rel="shortcut icon" type="image/x-png" href="../Homepage/gallery/ipuIcon.png" />
     <!-- fonts google -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <!-- style main css  -->
@@ -65,7 +67,7 @@
         ?>
 
         <h3 class="text-center mt-5">Coming Drives</h3>
-        <div class="row">
+        <div class="row container-fluid">
         <?php
         
         if ($data = mysqli_query($conn , $sql)) {
@@ -77,12 +79,12 @@
                                 <div class="card  shadow-lg p-3 m-5 bg-white rounded" style="width:20rem;">
                                     <div class="card-body">
                                         <h5 class="card-title ">Company Name :<?php echo $result['CompanyName'] ?>  </h5>
-                                        <p class="card-subtitle"><b>Position</b> :<?php echo $result['position']?> </p>
-                                        <p class="card-text"><b>Date : <?php echo $result['Date'];?></b></p>
-                                        <p><b>Package: <?php echo $result['Package']; ?> </b></p>
-                                        <p><b>CGPA Required:<?php echo $result['BtechPercentage']; ?> </b></p>
+                                        <p class="card-subtitle text-center"><b>Position</b> :<?php echo $result['position']?> </p>
+                                        <p class="card-text text-center"><b>Date : <?php echo $result['Date'];?></b></p>
+                                        <p class="card-text text-center"><b>Package: <?php echo $result['Package']; ?> </b></p>
+                                        <p class="card-text text-center"><b>CGPA Required:<?php echo $result['BtechPercentage']; ?> </b></p>
                                         <div class="text-center">
-                                            <a href="#" class="btn btn-primary text-center">Apply</a>
+                                            <a href="#" class="btn btn-primary ">Apply</a>
                                         </div>
                                     </div>
                                 </div>
