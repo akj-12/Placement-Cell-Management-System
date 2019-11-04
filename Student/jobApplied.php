@@ -1,3 +1,40 @@
+<?php
+    session_start();
+    if ($_SESSION['userName'] == true) {
+        // inserting applied job
+        $conn = mysqli_connect("localhost","root","","placementcell");
+        if ($conn == true) {
+            // echo "Connected Successfully";
+
+        }else{
+            die("Database connectivity failed".mysqli_connect_error());
+        } 
+            // fetching data for job id applied 
+            $fetchId =  "SELECT * FROM postjob";
+            if ($data = mysqli_query($conn , $fetchId)) {
+                if (mysqli_num_rows($data) > 0) {
+                    while($result = mysqli_fetch_assoc($data)){
+                        //inserting values into database 
+                        if (isset($_GET['apply'])) {
+                            $sql = "INSERT INTO jobapplied(EnrollmentNumber , CompanyName) VALUES ('$_SESSION[userName]' , '$result[CompanyName]')";
+
+                            if (mysqli_query($conn , $sql) != $result['CompanyName']) {
+                                echo "success";
+                                break;
+                            }else{
+                                echo "unsucess";
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
+           
+    }else{
+        header('location:studentlogin.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,13 +77,11 @@
         <div class="collapse navbar-collapse " id="collapsibleNavbar">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="../Student/studentLogin.php">Student Login</a>
+                    <a class="nav-link" href="../Student/studentProfile.php"><?php echo "Hello , " .$_SESSION['userName'];?></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../TPO/tpoLogin.php">TPO Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Placement Drives</a>
+                
+                <li>
+                    <a href="logout.php" class="nav-link">Logout</a>
                 </li>
             </ul>
         </div>
@@ -74,7 +109,7 @@
             if (mysqli_num_rows($data) > 0) {
                 
                 while($result = mysqli_fetch_assoc($data) ){
-                    ?>                           
+                    ?>                     
                             <div class="col-lg-4">
                                 <div class="card  shadow-lg p-3 m-5 bg-white rounded" style="width:20rem;">
                                     <div class="card-body">
@@ -84,7 +119,7 @@
                                         <p class="card-text text-center"><b>Package: </b> <?php echo $result['Package']; ?> </p>
                                         <p class="card-text text-center"><b>CGPA Required: </b><?php echo $result['BtechPercentage']; ?> </p>
                                         <div class="text-center">
-                                            <a href="../Student/jobApplied.php?apply=true" class="btn btn-primary " >Apply</a>
+                                            <a href="../Student/jobApplied.php" class="btn btn-primary " name="apply">Apply</a>
                                         </div>
                                     </div>
                                 </div>

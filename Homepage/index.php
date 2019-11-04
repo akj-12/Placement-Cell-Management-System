@@ -57,7 +57,7 @@
         <h1>Welcome to Placement Cell</h1>
         <p>We are here to build your career skills and career with our driver passion and reliality.</p>
         <div>
-            <button class="btn btn-design">Current Drive</button>
+            <a href="../Placement/jobProtal.php" class="btn btn-design">Current Drive</a>
         </div>
     </div>
     <!-- banner end -->
