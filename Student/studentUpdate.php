@@ -35,6 +35,7 @@ if (isset($_REQUEST['update'])) {
         $highSchool = $_REQUEST['highSchool'];
         $twelvePassOutYear = $_REQUEST['twelvePassOutYear'];
         $btechPercentage = $_REQUEST['btechPercentage'];
+        $activeBacklog = $_REQUEST['activeBacklog'];
         // inserting file 
 
         // retriving from form
@@ -45,7 +46,7 @@ if (isset($_REQUEST['update'])) {
 
         move_uploaded_file($file_temp,"FileUpload/".$fileName);
         $sql = "UPDATE studentdetails SET Address = '$address',City='$city',State='$state',Zip='$zip',Email='$email' , Mobile='$mobile' ,TenthPercentage='$tenthPercentage',TenthSchool='$schoolName',
-        TenthPassOutYear='$tenthPassOutYear' ,TwelvePercentage='$twelvePercentage',TwelveSchoolName='$highSchool',TwelvePassOutYear='$twelvePassOutYear',BtechPercentage='$btechPercentage',CV='$fileName' where id = $_SESSION[id]";
+        TenthPassOutYear='$tenthPassOutYear' ,TwelvePercentage='$twelvePercentage',TwelveSchoolName='$highSchool',TwelvePassOutYear='$twelvePassOutYear',ActiveBacklog = '$activeBacklog',BtechPercentage='$btechPercentage',CV='$fileName' where id = $_SESSION[id]";
 
         if (mysqli_query($conn,$sql)) {
             // echo "Success";
@@ -223,6 +224,10 @@ if (isset($_REQUEST['update'])) {
                     <label for="btech">B.TECH CGPA</label>
                     <input type="text" class="form-control" name="btechPercentage" id="btech" value="<?php echo $result['BtechPercentage']; ?>" required>
                 </div>
+                <div class="form-froup col-md-4">
+                    <label for="activeBacklog">Active Backlog</label>
+                    <input type="text" class="form-control" name="activeBacklog" id="activeBacklog" value="<?php echo $result['ActiveBacklog']; ?>" required>
+                </div>
                 </div>
                 <div class="form-group">
                     <label for="CV">Upload your CV:</label>
@@ -243,7 +248,7 @@ if (isset($_REQUEST['update'])) {
                 <ul class="list-unstyled p-4">
                     <li><a href="studentlogin.php">Student Login</a></li>
                     <li><a href="../TPO/tpoLogin.php">TPO Login</a></li>
-                    <li><a href="#">Placement Drive</a></li>
+                    <li><a href="../Placement/jobProtal.php">Placement Drive</a></li>
                 </ul>
             </div>
             <div class="col-md-6 ">

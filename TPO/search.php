@@ -77,11 +77,26 @@
             $lastName = $_POST['LastName'];
             $enrollmentNumber = $_POST['EnrollmentNumber'];
             $Mobile = $_POST['Mobile'];
+            $btechPercentage = $_POST['btechPercentage'];
 
          // Attempt select query execution
-        $sql = "SELECT * FROM studentdetails WHERE FirstName LIKE '%".$firstName."%' AND LastName LIKE '%".$lastName."%' AND  EnrollmentNumber LIKE '%".$enrollmentNumber."%' AND Mobile LIKE '%".$Mobile."%'";
+        $sql = "SELECT * FROM studentdetails WHERE FirstName LIKE '%".$firstName."%' AND LastName LIKE '%".$lastName."%' AND  EnrollmentNumber LIKE '%".$enrollmentNumber."%' AND Mobile LIKE '%".$Mobile."%' ";
+        
+        //btech percentage search result
+        $percent = "SELECT BtechPercentage FROM studentdetails WHERE BtechPercentage LIKE '%".$btechPercentage."%'";
+        $res = mysqli_query($conn , $percent);
+        $storeArray = Array();
+        while($row = mysqli_fetch_array($res)){
+            $storeArray[] = $row['BtechPercentage'];
+        }
+        foreach($storeArray as $arr){
+            echo $arr;
+        }
+
+        
         if($result = mysqli_query($conn, $sql)){
-        if(mysqli_num_rows($result) > 0){
+            if(mysqli_num_rows($result) > 0){
+            
         ?>
 
         <table class="table table-bordered">
@@ -102,6 +117,7 @@
                 <tbody>
                         <?php
                                 while($row = mysqli_fetch_array($result)){
+                                        if ($btechPercentage <= $row['BtechPercentage']) {
                                         echo "<tr>";
                                                 echo "<td>" . $row['id'] . "</td>";
                                                 echo "<td>" . $row['FirstName'] . "</td>";
@@ -113,6 +129,7 @@
                                                 echo "<td>" . $row['Zip'] . "</td>";
                                                 echo "<td>" . $row['EnrollmentNumber'] . "</td>";
                                         echo "</tr>";
+                                        }
                                 }
                               
                                 } else{
@@ -153,6 +170,9 @@
                         <tbody>
                                 <?php
                                       while($row = mysqli_fetch_array($result)){
+                                        
+                                        if ($btechPercentage <= $row['BtechPercentage']) {
+                                           
                                         echo "<tr>";
                                                 echo "<td>" . $row['EnrollmentNumber'] . "</td>";
                                                 echo "<td>" . $row['TenthPercentage'] . "</td>";
@@ -163,7 +183,9 @@
                                                 echo "<td>" . $row['TwelvePassOutYear'] . "</td>";
                                                 echo "<td>" . $row['BtechPercentage'] . "</td>";
                                         echo "</tr>";
+                                        
                                 }  
+                            }
                                 ?>
                         </tbody>
                 
@@ -188,7 +210,7 @@
                 <h3>Navigation</h3>
                 <ul class="list-unstyled p-4">
                     <li><a href="../TPO/tpoLogin.php">TPO Login</a></li>
-                    <li><a href="#">Placement Drive</a></li>
+                    <li><a href="../Placement/jobProtal.php">Placement Drive</a></li>
                 </ul>
             </div>
             <div class="col-md-6 ">

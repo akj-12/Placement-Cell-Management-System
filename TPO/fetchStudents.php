@@ -85,6 +85,13 @@
                     <input type="text" class="form-control" placeholder="Mobile Number" name="Mobile">
                 </div>
             </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="Btech Percentage">Btech Percentage</label>
+                    <input type="text" class="form-control" placeholder="Btech CGPA" name="btechPercentage">
+                </div>
+            </div>
+
 
             <div class="text-center">
                 <button type="submit" class="btn btn-primary " name="search">Search</button>

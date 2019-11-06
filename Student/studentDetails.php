@@ -166,6 +166,10 @@
                     <label for="btech">B.TECH CGPA</label>
                     <input type="text" class="form-control" name="btechPercentage" id="btech" required>
                 </div>
+                <div class="form-froup col-md-4">
+                    <label for="activebacklog">Active Backlog</label>
+                    <input type="text" class="form-control" name="activeBacklog" id="activebacklog" required>
+                </div>
                 </div>
                 <div class="form-group">
                     <label for="CV">Upload your CV:</label>
@@ -186,7 +190,7 @@
                 <ul class="list-unstyled p-4">
                     <li><a href="studentlogin.php">Student Login</a></li>
                     <li><a href="../TPO/tpoLogin.php">TPO Login</a></li>
-                    <li><a href="#">Placement Drive</a></li>
+                    <li><a href="../Placement/jobProtal.php">Placement Drive</a></li>
                 </ul>
             </div>
             <div class="col-md-6 ">

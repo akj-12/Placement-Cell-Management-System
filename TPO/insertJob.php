@@ -20,9 +20,10 @@
         $date = $_REQUEST['date'];
         $package = $_REQUEST['package'];
         $criteria = $_REQUEST['criteria'];
+        $link = $_REQUEST['Link'];
 
         if (isset($_POST['search'])) {
-                $sql = "INSERT INTO PostJob (CompanyName,position,Date,Package,BtechPercentage) VALUES ('$companyName','$position','$date','$package','$criteria')";
+                $sql = "INSERT INTO PostJob (CompanyName,position,Date,Package,BtechPercentage,Link) VALUES ('$companyName','$position','$date','$package','$criteria','$link')";
 
                 if (mysqli_query($conn,$sql)) {
                         // echo "Successful insertion";

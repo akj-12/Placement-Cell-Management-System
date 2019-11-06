@@ -255,6 +255,15 @@
         </td>  
     </tr>
     <tr>
+        <th scope="row">Active Backlog</th>
+        <td ><?php echo $result['ActiveBacklog']; ?></td>
+        <td>
+            <a href="studentUpdate.php">
+                <span><i class="fa fa-edit fa-2x fa-center"></i></span>
+            </a>
+        </td>  
+    </tr>
+    <tr>
         <th scope="row">CV</th>
         <td ><?php echo $result['CV']; ?></td>
         <td>

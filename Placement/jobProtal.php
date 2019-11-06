@@ -46,7 +46,7 @@
                     <a class="nav-link" href="../TPO/tpoLogin.php">TPO Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Placement Drives</a>
+                    <a class="nav-link" href="../Placement/jobProtal.php">Placement Drives</a>
                 </li>
             </ul>
         </div>
@@ -63,7 +63,7 @@
         }
 
         // query to fetch data from database 
-        $sql = "SELECT * FROM postjob ";
+         $sql = "SELECT * FROM postjob ";
         ?>
 
         <h3 class="text-center mt-5">Coming Drives</h3>
@@ -78,14 +78,27 @@
                             <div class="col-lg-4">
                                 <div class="card  shadow-lg p-3 m-5 bg-white rounded" style="width:20rem;">
                                     <div class="card-body">
-                                        <h5 class="card-title ">Company Name : <?php echo $result['CompanyName'] ?>  </h5>
-                                        <p class="card-subtitle text-center"><b>Position </b> :  <?php echo $result['position']?> </p>
-                                        <p class="card-text text-center"><b>Date : </b><?php echo $result['Date'];?></p>
-                                        <p class="card-text text-center"><b>Package: </b> <?php echo $result['Package']; ?> </p>
-                                        <p class="card-text text-center"><b>CGPA Required: </b><?php echo $result['BtechPercentage']; ?> </p>
-                                        <div class="text-center">
-                                            <a href="../Student/jobApplied.php?apply=true" class="btn btn-primary " >Apply</a>
-                                        </div>
+                                        
+                                    <label ><h5>Company Name</h5></label>
+                                        <input type="text" class="form-control " name="CompanyName" value="<?php echo $result['CompanyName']; ?>" id="firstName"  readonly  >
+                                        <label ><h5>Position</h5></label>
+                                        <input type="text" class="form-control " name="Position" value="<?php echo $result['position']; ?>"   readonly  >
+                                        <label ><h5>Date</h5></label>
+                                        <input type="text" class="form-control " name="Date" value="<?php echo $result['Date']; ?>"   readonly  >
+                                        <label ><h5>Package</h5></label>
+                                        <input type="text" class="form-control " name="Package" value="<?php echo $result['Package']." LPA"; ?>"  readonly  >
+                                        <label ><h5>Btech CGPA</h5></label>
+                                        <input type="text" class="form-control " name="BtechPercentage" value="<?php echo $result['BtechPercentage']; ?>"   readonly  >
+                                        <br>
+                                        <input type="text" class="form-control " value="<?php echo $result['Link']; ?>"    >
+                                        <br>
+                                            <form action="../Student/jobApplied.php" method="GET">
+                                                <div class="text-center">
+                                                    <button class="btn btn-primary" name="apply">Apply</button>
+                                                </div>
+                                            </form>
+                                        
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -118,7 +131,7 @@
                 <ul class="list-unstyled p-4">
                     <li><a href="../Student/studentLogin.php">Student Login</a></li>
                     <li><a href="tpologin.php">TPO Login</a></li>
-                    <li><a href="#">Placement Drive</a></li>
+                    <li><a href="../Placement/jobProtal.php">Placement Drive</a></li>
                 </ul>
             </div>
             <div class="col-md-6 ">

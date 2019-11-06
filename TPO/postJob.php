@@ -82,6 +82,11 @@
                     <input type="text" class="form-control" placeholder="Enter CGPA required" id="Criteria" name="criteria" required>
                 </div>
                 
+                <div class="form-froup col-md-4">
+                    <label for="Criteria">Criteria</label>
+                    <input type="text" class="form-control" placeholder="Enter Company Link" name="Link" required>
+                </div>
+                
                 </div>
                 <br>
                 <div class="text-center">
